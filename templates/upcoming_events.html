@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>
+            {{ title }} - Our Events
+        </title>
+    </head>
+    <body>
+        <ul>
+            <li><a href="/upcoming_events">Our Upcoming Events</a></li>
+        </ul>
+        <h1>Our Upcoming Events</h1>
+
+        <form action="/upcoming_events" method="post">
+            <label for="eventDate">Date</label>
+            <input type="text" name="eventDate" id="eventDate">
+            <label for="eventName">Name</label>
+            <input type="text" name="eventName" id="eventName">
+            <label for="eventGuest">Guests</label>
+            <input type="text" name="eventGuest" id="eventGuest">
+            <label for="eventLocation">Location</label>
+            <input type="text" name="eventLocation" id="eventLocation">
+            <label for="eventDesc">Description</label>
+            <input type="text" name="eventDesc" id="eventDesc">
+            <label for="eventRepeat">Repeated Event?</label>
+            <input type="checkbox" name="eventRepeat" id="eventRepeat" value="False"/>
+            <input type="submit" value="Add Event">
+        </form>
+
+        {% for event in events %}
+        <div>
+            <p>
+                <b>{{ event.date }}:</b> {{ event.name_of_event }} {{ event.number_of_guests }} {{ event.room_location }} {{ event.description }} {{ event.repeat }}
+            </p>
+        </div>
+        {% endfor %}
+    </body>
+</html>
